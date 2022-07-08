@@ -1,4 +1,5 @@
 package com.loanstreet.example.server.objects;
+import java.sql.Array;
 import java.util.*;
 
 public class LoanManager {
@@ -22,6 +23,15 @@ public class LoanManager {
         }
         return loan.toString();
     }
+
+    public List<String> getAllLoans() {
+        List<String> loans = new ArrayList<>();
+        for (Loan loan : _loanmap.values()) {
+            loans.add(loan.toString());
+        }
+        return loans;
+    }
+
 
     public String updateLoan(String loan_id, Map<String, Double> values) {
         Loan loan = _loanmap.get(loan_id);

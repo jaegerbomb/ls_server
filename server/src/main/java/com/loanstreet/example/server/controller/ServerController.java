@@ -4,6 +4,7 @@ import com.loanstreet.example.server.objects.LoanManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -11,9 +12,9 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class ServerController {
     public static LoanManager manager = new LoanManager();
-    @GetMapping("test")
+    @GetMapping("health")
     public String test_me() {
-        return "I'm good";
+        return "up";
     }
 
     @PostMapping("create")
@@ -21,13 +22,16 @@ public class ServerController {
                               @RequestParam("length") double length, @RequestParam("payment") double payment)
     {
         String id = manager.createLoan(amount, rate, length, payment);
-        return "Successfully created loan - ID = " + id;
+        return id;
     }
 
     @GetMapping("get")
     public String get_loan(@RequestParam("id") String id) {
         return manager.getLoan(id);
     }
+
+    @GetMapping("all")
+    public List<String> get_all_loans() { return manager.getAllLoans(); }
 
     @PostMapping("update")
     public String update_loan(@RequestParam("id") String id, @RequestParam("amount")Optional<Double> amount,

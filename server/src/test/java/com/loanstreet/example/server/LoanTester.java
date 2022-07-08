@@ -2,6 +2,7 @@ package com.loanstreet.example.server;
 import java.io.*;
 import java.sql.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.loanstreet.example.server.objects.LoanManager;
 
@@ -28,5 +29,9 @@ public class LoanTester {
             l_info.put("nothing", r.nextDouble());
             System.out.println(manager.updateLoan(loan_id, l_info));
         }
+
+        // get all loans
+        List<String> loans = manager.getAllLoans();
+        System.out.println(loans.stream().map(Object::toString).collect(Collectors.joining("\n")).toString());
     }
 }
