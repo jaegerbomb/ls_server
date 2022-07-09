@@ -16,5 +16,8 @@ POST: "/api/update?id=<loan_id>&amount=<loan_amount>&rate=<interest_rate>&length
   
 GET: "api/all" - returns all loans that have been created
 
-There is currently an EC2 instance hosted here:
+There is currently an EC2 instance hosted here (remember to add /api/<command>:
 http://ec2-35-175-133-100.compute-1.amazonaws.com:8888
+example:
+http://ec2-35-175-133-100.compute-1.amazonaws.com:8888/api/all
+
